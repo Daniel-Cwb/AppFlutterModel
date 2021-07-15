@@ -33,9 +33,12 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        primaryColor: Colors.red[700],
+      ),
       home: Scaffold(
         appBar: AppBar(
-          title: Center(child: Text('Calculadora de Conbustivel')),
+          title: Center(child: Text('Calculadora de Conbustível')),
         ),
         bottomNavigationBar: BottomAppBar(
           child: Text('App Desenvolvido pelos alunos de ADS - Senac'),
@@ -43,7 +46,7 @@ class _MyAppState extends State<MyApp> {
         body: Padding(
           padding: const EdgeInsets.all(40),
           child: Column(children: [
-            Center(child: Text('Vamos economizar?')),
+            Center(child: Text('Vamos economizar?', style: TextStyle(fontSize: 30),)),
             TextFormField(
               decoration: InputDecoration(
                   border: UnderlineInputBorder(),
@@ -64,15 +67,15 @@ class _MyAppState extends State<MyApp> {
                     etanol = text.replaceAll(',', '.');            
                   },
             ),
-            Padding(
-              padding: const EdgeInsets.all(40.0),
-              child: ElevatedButton(
+            SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
                 onPressed: CalculadoraCombustivel,
                 child: Text('Calcular'),
-              ),
+                ),
             ),
-            Center(child: Text('O melhor combustível é: ')),
-            Text('$melhorCombustivel'),
+            Center(child: Text('\nO melhor combustível é: ', style: TextStyle(fontSize: 18),)),
+            Text('\n $melhorCombustivel', style: TextStyle(fontSize: 28),),
           ]),
         ),
       ),
