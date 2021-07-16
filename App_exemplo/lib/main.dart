@@ -34,11 +34,14 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        bottomAppBarColor: Colors.blueGrey[700],
+        buttonColor: Colors.blueGrey[700],
+        backgroundColor: Colors.brown[700],
         primaryColor: Colors.red[700],
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Center(child: Text('Calculadora de Conbustível')),
+          title: Center(child: Text('Calculadora de Combustível',)),
         ),
         bottomNavigationBar: BottomAppBar(
           child: Text('App Desenvolvido pelos alunos de ADS - Senac'),
