@@ -98,7 +98,7 @@ class _MyAppState extends State<MyApp> {
                 ),
             ),
             Center(child: Text('\nO Resultado é:', style: TextStyle(fontSize: 18),)),
-            Text('$valor_resultado', style: TextStyle(fontSize: 28),),
+            Text('$valor_resultado', style: TextStyle(fontSize: 24),),
           ]),
         ),
       ),
