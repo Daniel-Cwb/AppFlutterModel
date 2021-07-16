@@ -14,23 +14,32 @@ class _MyAppState extends State<MyApp> {
   String operador = '';
   String pvalor = '0.0';
   String svalor = '0.0';
+  String valor_resultado = '';
   double resultado = 0.0;
 
-  void Calculadora() {
+  void calculadora() {
     setState(() {
       double p_valor = double.parse(pvalor.toString());
       double s_valor = double.parse(svalor.toString());
-      double valor_operador = double.parse(operador.toString());
-      if (valor_operador == '+') {
-        resultado == (p_valor + s_valor);
-      } else if (valor_operador == '-') {
-        resultado = (p_valor - s_valor);
-      } else if (valor_operador == '*') {
-        resultado == (p_valor * s_valor);
-      }else if (valor_operador == '/') {
+
+      if (operador == '+') {
+        resultado = p_valor + s_valor;
+        valor_resultado = resultado.toString();
+
+      } else if (operador == '-') {
+        resultado = p_valor - s_valor;
+        valor_resultado = resultado.toString();
+
+      } else if (operador == '*') {
+        resultado = p_valor * s_valor;
+        valor_resultado = resultado.toString();
+
+      }else if (operador == '/') {
         resultado = p_valor / s_valor;
+        valor_resultado = resultado.toString();
+
       }else {
-        resultado = 0;
+        valor_resultado = 'Valor inválido';
       }
     });
   }
@@ -55,7 +64,7 @@ class _MyAppState extends State<MyApp> {
               decoration: InputDecoration(
                   border: UnderlineInputBorder(),
                   hintText: 'Informe apenas valores númericos. Ex: 5.29',
-                  icon: Icon(Icons.local_gas_station),
+                  icon: Icon(Icons.money),
                   labelText: 'Informe o primeiro valor: '),
                   onChanged: (valor) {
                     pvalor = valor.replaceAll(',', '.');            
@@ -65,17 +74,17 @@ class _MyAppState extends State<MyApp> {
               decoration: InputDecoration(
                   border: UnderlineInputBorder(),
                   hintText: 'Informe apenas valores como: Ex: +, -, * ou /',
-                  icon: Icon(Icons.local_gas_station),
+                  icon: Icon(Icons.countertops),
                   labelText: 'Informe o tipo de Operação que deseja: '),
-                  onChanged: (text) {
-                    operador = text.replaceAll(',', '.');            
+                  onChanged: (valor) {
+                    operador = valor;            
                   },
             ),
             TextFormField(
               decoration: InputDecoration(
                   border: UnderlineInputBorder(),
                   hintText: 'Informe apenas valores númericos. Ex: 4.29',
-                  icon: Icon(Icons.local_gas_station),
+                  icon: Icon(Icons.money),
                   labelText: 'Informe o segundo valor: '),
                   onChanged: (valor) {
                     svalor = valor.replaceAll(',', '.');            
@@ -84,12 +93,12 @@ class _MyAppState extends State<MyApp> {
             SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                onPressed: Calculadora,
+                onPressed: calculadora,
                 child: Text('Calcular'),
                 ),
             ),
-            Center(child: Text('\nO Resultado é', style: TextStyle(fontSize: 18),),
-            Text('\n $resultado',),
+            Center(child: Text('\nO Resultado é:', style: TextStyle(fontSize: 18),)),
+            Text('$valor_resultado', style: TextStyle(fontSize: 28),),
           ]),
         ),
       ),
